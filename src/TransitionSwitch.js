@@ -40,10 +40,27 @@ class TransitionRoutes extends Component {
       })
     );
 
-    const style = {
-      opacity: Animated.template`${this.state.animate}`,
-      transform: Animated.template`translate3d(0, ${interpolation}, 0)`,
-    };
+    let style = {};
+
+    switch (this.props.transition) {
+      case 'fade-down':
+        style = {
+          opacity: Animated.template`${this.state.animate}`,
+          transform: Animated.template`translate3d(0, ${interpolation}, 0)`,
+        };
+        break;
+      case 'fade-up':
+        style = {
+          opacity: Animated.template`${this.state.animate}`,
+          transform: Animated.template`translate3d(0, -${interpolation}, 0)`,
+        };
+        break;
+      default:
+        style = {
+          opacity: Animated.template`${this.state.animate}`
+        };
+        break;
+    }
 
     return (
       <React.Fragment>
