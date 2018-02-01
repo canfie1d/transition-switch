@@ -21,47 +21,45 @@ import TransitionSwitch from './TransitionSwitch';
 
 ## Props
 ---
-_Listed values are defaults_
-
 - `transition`
 
   Controls the animation type
 
-  default: `'fade'`
+  _default:_ `'fade'`
 
 - `timeout`
 
   Controls the animation duration
 
-  default: `{enter: 500, exit: 500 }`
+  _default:_ `{enter: 500, exit: 500 }`
 
 - `scrollToTop`
 
   Toggles whether your scroll position is preserved on route change
 
-  default: `true`
+  _default:_ `true`
 
 - `scrollTopOffset`
 
   Controls scrollToTop's final position
 
-  default: `{ x: 0, y: 0 }`
+  _default:_ `{ x: 0, y: 0 }`
 
 - `scrollTopDelay`
 
   Defines when the scrollToTop occurs during the route animation
 
-  default: `250`
+  _default:_ `250`
 
 
 - `scrollContainer`
 
   If your layout locks the body and scrolls another element, you can change the scroll container target for scrollToTop
 
-  default: `window`
+  _default:_ `window`
 
 - `animatedDivClassName`
 
   Optionally pass a class name to the div that is animated
 
-  default: `"animatedRouteWrapper"`
+  _default:_ `"animatedRouteWrapper"`
