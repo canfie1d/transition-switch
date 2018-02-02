@@ -1,6 +1,6 @@
 {
   "name": "transition-switch",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "main": "lib/transition-switch.min.js",
   "description": "React Router 4 Switch Replacement that adds animations and scroll to top.",
   "repository": {

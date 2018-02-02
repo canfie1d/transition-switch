@@ -3,6 +3,8 @@
 > This package replaces react-router 4's `<Switch>` component and enables scroll-to-top functionality and route transition animations using [React Transition Group](https://github.com/reactjs/react-transition-group) and
 [Animate.js](https://github.com/animatedjs/animated).
 
+[![NPM Version][npm-image]][npm-url]
+
 Inspired by [react-router-transitions](https://github.com/gianlucacandiotti/react-router-transitions)
 
 Demo available in `/demo`
@@ -24,14 +26,18 @@ import { TransitionSwitch } from './TransitionSwitch';
 </TransitionSwitch>
 ```
 You can also use the `ScrollToTop` component independently which will initiate a scroll on any route change (requires location prop from react-router).
-```
+
+```bash
 import { ScrollToTop } from './TransitionSwitch';
 ```
-```
+
+```bash
 <ScrollToTop location={this.props.location} />
 ```
 
 ## Props
+Props marked with an asterisk also exist on `ScrollToTop` as well
+
 - **`transition`**
 
   Controls the animation type
@@ -77,4 +83,9 @@ import { ScrollToTop } from './TransitionSwitch';
 
   _default:_ `"animatedRouteWrapper"`
 
-* These props also exist on `ScrollToTop` as well
+## License
+
+[MIT](http://vjpr.mit-license.org)
+
+[npm-image]: https://img.shields.io/npm/v/transition-switch.svg
+[npm-url]: https://npmjs.org/package/transition-switch
