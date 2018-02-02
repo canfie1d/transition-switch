@@ -1,12 +1,24 @@
 /* global __dirname, require, module*/
 const webpack = require('webpack');
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const env = require('yargs').argv.env;
 
 let libraryName = 'transition-switch';
 
-let plugins = [], outputFile;
+let plugins = [
+  new CopyWebpackPlugin([
+    {
+      from: 'lib/transition-switch.js',
+      to: '../demo/src/transition-switch.js',
+      force: true,
+      transform: function (content, path) {
+        return '/* eslint-disable */\n' + content;
+      }
+    }
+  ])
+], outputFile;
 
 if (env === 'build') {
   plugins.push(new UglifyJsPlugin({ minimize: true }));
