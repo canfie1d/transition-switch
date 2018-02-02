@@ -21,8 +21,14 @@ export default class ScrollToTop extends React.Component {
   }
 }
 
+ScrollToTop.defaultProps = {
+  scrollTopOffset: { x: 0, y: 0 },
+  scrollTopDelay: 250,
+  scrollContainer: window,
+}
+
 ScrollToTop.propTypes = {
-  location: PropTypes.string,
+  location: PropTypes.object.isRequired,
   scrollTopOffset: PropTypes.object,
   scrollTopDelay: PropTypes.number,
   scrollContainer: PropTypes.any

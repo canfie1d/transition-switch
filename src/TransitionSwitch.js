@@ -98,8 +98,11 @@ class TransitionRoutes extends Component {
 
 TransitionRoutes.propTypes = {
   children: PropTypes.array.isRequired,
-  location: PropTypes.string.isRequired,
-  transition: PropTypes.string,
+  location: PropTypes.object.isRequired,
+  transition: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
   timeout: PropTypes.object,
   scrollToTop: PropTypes.bool,
   scrollTopOffset: PropTypes.object,
@@ -112,9 +115,6 @@ TransitionRoutes.defaultProps = {
   transition: 'fade',
   timeout: { enter: 500, exit: 500 },
   scrollToTop: true,
-  scrollTopOffset: { x: 0, y: 0 },
-  scrollTopDelay: 250,
-  scrollContainer: window,
   animatedDivClassName: 'animatedRouteWrapper'
 }
 
