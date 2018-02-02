@@ -3,6 +3,7 @@ import { withRouter, Switch } from 'react-router-dom';
 import { TransitionGroup, Transition } from 'react-transition-group';
 import * as Animated from 'animated/lib/targets/react-dom';
 import ScrollToTop from './ScrollToTop';
+import PropTypes from 'prop-types';
 
 class TransitionRoutes extends Component {
   constructor(props) {
@@ -10,25 +11,28 @@ class TransitionRoutes extends Component {
 
     this.state = {
       animate: new Animated.Value(0),
-      location: this.props.location,
+      location: this.props.location
     };
+
+    this.handleEnter = this.handleEnter.bind(this);
+    this.handleExit = this.handleExit.bind(this);
   }
 
-  handleEnter = () => {
+  handleEnter() {
     setTimeout(() => {
       Animated.spring(this.state.animate, { toValue: 1 }).start();
     }, this.props.timeout.enter);
-  };
+  }
 
-  handleExit = () => {
+  handleExit() {
     Animated.spring(this.state.animate, { toValue: 0 }).start();
 
     setTimeout(() => {
       this.setState({
-        location: this.props.location,
+        location: this.props.location
       });
     }, this.props.timeout.exit);
-  };
+  }
 
   render() {
     const currentKey = this.props.location.pathname.split('/')[1] || '/';
@@ -36,7 +40,7 @@ class TransitionRoutes extends Component {
     const interpolation = (
       this.state.animate.interpolate({
         inputRange: [0, 1],
-        outputRange: ['12px', '0px'],
+        outputRange: ['12px', '0px']
       })
     );
 
@@ -46,13 +50,13 @@ class TransitionRoutes extends Component {
       case 'fade-down':
         style = {
           opacity: Animated.template`${this.state.animate}`,
-          transform: Animated.template`translate3d(0, ${interpolation}, 0)`,
+          transform: Animated.template`translate3d(0, ${interpolation}, 0)`
         };
         break;
       case 'fade-up':
         style = {
           opacity: Animated.template`${this.state.animate}`,
-          transform: Animated.template`translate3d(0, -${interpolation}, 0)`,
+          transform: Animated.template`translate3d(0, -${interpolation}, 0)`
         };
         break;
       default:
@@ -92,6 +96,18 @@ class TransitionRoutes extends Component {
   }
 }
 
+TransitionRoutes.propTypes = {
+  children: PropTypes.array.isRequired,
+  location: PropTypes.string.isRequired,
+  transition: PropTypes.string,
+  timeout: PropTypes.object,
+  scrollToTop: PropTypes.bool,
+  scrollTopOffset: PropTypes.object,
+  scrollTopDelay: PropTypes.number,
+  scrollContainer: PropTypes.any,
+  animatedDivClassName: PropTypes.string
+}
+
 TransitionRoutes.defaultProps = {
   transition: 'fade',
   timeout: { enter: 500, exit: 500 },
@@ -99,7 +115,7 @@ TransitionRoutes.defaultProps = {
   scrollTopOffset: { x: 0, y: 0 },
   scrollTopDelay: 250,
   scrollContainer: window,
-  animatedDivClassName: "animatedRouteWrapper"
+  animatedDivClassName: 'animatedRouteWrapper'
 }
 
 export default withRouter(TransitionRoutes);

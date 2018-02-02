@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class ScrollToTop extends React.Component {
   componentDidUpdate(prevProps) {
@@ -19,3 +20,11 @@ export default class ScrollToTop extends React.Component {
     return null;
   }
 }
+
+ScrollToTop.propTypes = {
+  location: PropTypes.string,
+  scrollTopOffset: PropTypes.object,
+  scrollTopDelay: PropTypes.number,
+  scrollContainer: PropTypes.any
+}
+
