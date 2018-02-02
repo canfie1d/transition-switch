@@ -1,6 +1,7 @@
 {
-  "name": "transition-routes",
-  "version": "0.1.0",
+  "name": "transition-switch",
+  "version": "0.1.1",
+  "main": "lib/transition-switch.min.js",
   "description": "React Router 4 Switch Replacement that adds animations and scroll to top.",
   "repository": {
     "type": "git",
@@ -11,9 +12,8 @@
     "node": ">=6"
   },
   "bugs": {
-    "url": "https://github.com/canfie1d/complete-react-scripts/issues"
+    "url": "https://github.com/canfie1d/transition-switch/issues"
   },
-  "main": "transition-routes",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -22,6 +22,7 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "copy-webpack-plugin": "^4.3.1",
     "eslint": "^4.13.1",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-react": "^7.6.1",
@@ -39,7 +40,7 @@
     "react-transition-group": "^2.2.1"
   },
   "scripts": {
-    "build": "webpack --env dev && webpack --env build && npm run",
-    "dev": "webpack --progress --colors --watch --env dev"
+    "dev": "webpack --progress --colors --watch --env dev",
+    "build": "webpack --env dev && webpack --env build && npm run"
   }
 }
