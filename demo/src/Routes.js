@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router';
-import TransitionSwitch from './TransitionSwitch';
+// TransitionSwitch is recreated on every build
+import { TransitionSwitch } from './transition-switch';
 import Home from './Routes/Home';
 import NotFound from './Routes/NotFound';
 
@@ -13,4 +14,4 @@ export default class Routes extends React.Component {
       </TransitionSwitch>
     );
   }
-};
+}
