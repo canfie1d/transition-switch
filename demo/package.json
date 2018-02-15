@@ -61,7 +61,7 @@
     "start": "node start.js",
     "build": "node build.js",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build"
+    "deploy": "gh-pages -d build"
   },
   "homepage": "http://canfie1d.github.io/transition-switch"
 }
