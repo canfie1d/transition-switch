@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import Routes from './Routes';
 
 ReactDOM.render(
-  <Router>
+  <Router basename="/">
     <Routes />
   </Router>,
   document.getElementById('root')
