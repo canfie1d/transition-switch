@@ -7,7 +7,7 @@
 
 Inspired by [react-router-transitions](https://github.com/gianlucacandiotti/react-router-transitions)
 
-Demo available in `/demo`
+Demo available here: [https://canfie1d.github.io/transition-switch/](https://canfie1d.github.io/transition-switch/#/)
 
 ## Installation
 

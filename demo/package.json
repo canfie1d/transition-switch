@@ -32,7 +32,7 @@
     "eslint-loader": "^1.9.0",
     "eslint-plugin-flowtype": "^2.44.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
     "eslint-plugin-react": "^7.6.1",
     "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "^3.0.2",
@@ -40,6 +40,7 @@
     "fs-extra": "5.0.0",
     "html-webpack-plugin": "^2.30.1",
     "object-assign": "4.1.1",
+    "postcss-flexbugs-fixes": "^3.3.0",
     "postcss-loader": "^2.1.0",
     "promise": "8.0.1",
     "prop-types": "^15.6.0",
@@ -61,7 +62,7 @@
     "start": "node start.js",
     "build": "node build.js",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b gh-pages -d build"
   },
   "homepage": "http://canfie1d.github.io/transition-switch"
 }
