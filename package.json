@@ -1,6 +1,6 @@
 {
   "name": "transition-switch",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "lib/transition-switch.min.js",
   "description": "React Router 4 Switch Replacement that adds animations and scroll to top.",
   "repository": {
@@ -17,27 +17,27 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.1",
-    "babel-loader": "^7.1.2",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "copy-webpack-plugin": "^4.3.1",
-    "eslint": "^4.16.0",
-    "eslint-loader": "^1.9.0",
-    "eslint-plugin-react": "^7.6.1",
-    "webpack": "^3.10.0",
+    "copy-webpack-plugin": "^4.5.1",
+    "eslint": "^4.19.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-react": "^7.7.0",
+    "webpack": "^4.5.0",
     "yargs": "^11.0.0"
   },
   "peerDependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-router-dom": "4.2.2"
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-router-dom": "^4.2.2"
   },
   "dependencies": {
-    "animated": "^0.2.1",
-    "prop-types": "^15.6.0",
-    "react-transition-group": "^2.2.1"
+    "animated": "^0.2.2",
+    "prop-types": "^15.6.1",
+    "react-transition-group": "^2.3.1"
   },
   "scripts": {
     "dev": "webpack --progress --colors --watch --env dev",
