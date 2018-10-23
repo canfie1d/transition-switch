@@ -2,18 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class ScrollToTop extends React.Component {
+  timeout = '';
+
   componentDidUpdate(prevProps) {
     const scrollContainer = this.props.scrollContainer;
 
     if (this.props.location !== prevProps.location) {
-      setTimeout(() => {
+      this.timeout = setTimeout(() => {
         scrollContainer.scrollTo(this.props.scrollTopOffset.x, this.props.scrollTopOffset.y);
       }, this.props.scrollTopDelay);
     }
   }
 
   componentWillUnmount() {
-    clearTimeout();
+    clearTimeout(this.timeout);
   }
 
   render() {
