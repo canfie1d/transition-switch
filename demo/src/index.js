@@ -5,8 +5,10 @@ import Routes from './Routes';
 import './style.css';
 
 ReactDOM.render(
-  <Router basename="/">
-    <Routes />
-  </Router>,
+  <React.StrictMode>
+    <Router basename='/' hashType='noslash'>
+      <Routes />
+    </Router>
+  </React.StrictMode>,
   document.getElementById('root')
 );

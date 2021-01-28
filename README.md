@@ -1,7 +1,7 @@
 # Transition Switch
 
-> This package replaces react-router 4's `<Switch>` component and enables scroll-to-top functionality and route transition animations using [React Transition Group](https://github.com/reactjs/react-transition-group) and
-[Animate.js](https://github.com/animatedjs/animated).
+> This package replaces react-router 5's `<Switch>` component and enables scroll-to-top functionality and route transition animations using [React Transition Group](https://github.com/reactjs/react-transition-group) and
+> [Animate.js](https://github.com/animatedjs/animated).
 
 [![NPM Version][npm-image]][npm-url]
 
@@ -12,30 +12,36 @@ Demo available here: [https://canfie1d.github.io/transition-switch/](https://can
 ## Installation
 
 ```bash
-npm i --save transition-switch
+yarn add transition-switch
 ```
 
 ## Usage
+
 ```bash
-import { TransitionSwitch } from './TransitionSwitch';
+import { TransitionSwitch } from 'transition-switch'';
 ```
+
 ```bash
 <TransitionSwitch>
   <Route />
   <Route />
 </TransitionSwitch>
 ```
+
 You can also use the `ScrollToTop` component independently which will initiate a scroll on any route change (requires location prop from react-router).
 
 ```bash
 import { ScrollToTop } from './TransitionSwitch';
+import { useLocation } from 'react-router-dom';
 ```
 
 ```bash
-<ScrollToTop location={this.props.location} />
+const location = useLocation();
+<ScrollToTop location={location} />
 ```
 
 ## Props
+
 Props marked with an asterisk also exist on `ScrollToTop` as well
 
 - **`transition`**
@@ -58,20 +64,19 @@ Props marked with an asterisk also exist on `ScrollToTop` as well
 
   _default:_ `true`
 
-- **`scrollTopOffset`***
+- **`scrollTopOffset`\***
 
   Controls scrollToTop's final position
 
   _default:_ `{ x: 0, y: 0 }`
 
-- **`scrollTopDelay`***
+- **`scrollTopDelay`\***
 
   Defines when the scrollToTop occurs during the route animation
 
   _default:_ `250`
 
-
-- **`scrollContainer`***
+- **`scrollContainer`\***
 
   If your layout locks the body and scrolls another element, you can change the scroll container target for scrollToTop
 

@@ -1,38 +1,41 @@
-import React from 'react';
+import { useLayoutEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { usePrevious } from 'react-use';
 import PropTypes from 'prop-types';
 
-export default class ScrollToTop extends React.Component {
-  timeout = '';
+// Scroll restoration based on https://reacttraining.com/react-router/web/guides/scroll-restoration.
+const ScrollToTop = (props) => {
+  const location = useLocation();
+  const prevLocation = usePrevious(location);
+  let timeout;
 
-  componentDidUpdate(prevProps) {
-    const scrollContainer = this.props.scrollContainer;
-
-    if (this.props.location !== prevProps.location) {
-      this.timeout = setTimeout(() => {
-        scrollContainer.scrollTo(this.props.scrollTopOffset.x, this.props.scrollTopOffset.y);
-      }, this.props.scrollTopDelay);
+  useLayoutEffect(() => {
+    if (prevLocation && location.pathname !== prevLocation.pathname) {
+      timeout = setTimeout(() => {
+        props.scrollContainer.scrollTo(
+          props.scrollTopOffset.x,
+          props.scrollTopOffset.y
+        );
+      }, props.scrollTopDelay);
     }
-  }
 
-  componentWillUnmount() {
-    clearTimeout(this.timeout);
-  }
+    return () => clearTimeout(timeout);
+  }, [location]);
 
-  render() {
-    return null;
-  }
-}
+  return null;
+};
 
 ScrollToTop.defaultProps = {
   scrollTopOffset: { x: 0, y: 0 },
   scrollTopDelay: 250,
   scrollContainer: window,
-}
+};
 
 ScrollToTop.propTypes = {
   location: PropTypes.object.isRequired,
   scrollTopOffset: PropTypes.object,
   scrollTopDelay: PropTypes.number,
-  scrollContainer: PropTypes.any
-}
+  scrollContainer: PropTypes.any,
+};
 
+export default ScrollToTop;

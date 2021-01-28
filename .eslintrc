@@ -1,8 +1,9 @@
 {
   "env": {
     "browser": true,
-    "es6": true,
-    "node": true
+    "commonjs": true,
+    "node": true,
+    "es6": true
   },
   "globals": {
     "document": false,
@@ -16,16 +17,17 @@
     "expect": true,
     "sinon": true
   },
-  "parser": "babel-eslint",
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
-  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "jsx": true
+  },
+  "extends": ["react-app", "eslint:recommended"],
   "settings": {
     "react": {
       "createClass": "createReactClass",
       "pragma": "React",
-      "version": "16.2",
+      "version": "17.0.1",
       "flowVersion": "0.53"
     },
     "propWrapperFunctions": [
