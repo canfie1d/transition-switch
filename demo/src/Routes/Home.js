@@ -19,7 +19,7 @@ const Home = () => {
       </p>
       <p className='p'>
         More Information can be found on the{' '}
-        <NavLink to='/#details'>Details Page</NavLink>.
+        <NavLink to='/details'>Details Page</NavLink>.
       </p>
     </div>
   );

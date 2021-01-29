@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Switch } from 'react-router-dom';
-import { SwitchTransition, Transition } from 'react-transition-group';
+import React, { useMemo, useState } from 'react';
+import { useLocation, Switch } from 'react-router-dom';
+import { TransitionGroup, Transition } from 'react-transition-group';
 import * as Animated from 'animated/lib/targets/react-dom';
 import ScrollToTop from './ScrollToTop';
 import PropTypes from 'prop-types';
 
 const TransitionSwitch = (props) => {
+  const actualLocation = useLocation();
   const [animate] = useState(new Animated.Value(0));
-  const [location, setLocation] = useState(props.location);
-  const pathname = props.location.pathname;
-  const currentKey = pathname.split('/')[1] || '/';
-
-  useEffect(() => {
-    setLocation(props.location);
-  }, [pathname]);
+  const [location, setLocation] = useState(actualLocation);
 
   const handleEnter = () => {
     setTimeout(() => {
@@ -21,13 +16,13 @@ const TransitionSwitch = (props) => {
     }, props.timeout.enter);
   };
 
-  const handleExit = () => {
+  const handleExit = useMemo(() => {
     Animated.spring(animate, { toValue: 0 }).start();
 
     setTimeout(() => {
-      setLocation(props.location);
+      setLocation(actualLocation);
     }, props.timeout.exit);
-  };
+  }, [actualLocation]);
 
   const interpolation = animate.interpolate({
     inputRange: [0, 1],
@@ -35,6 +30,7 @@ const TransitionSwitch = (props) => {
   });
 
   let style = {};
+
   switch (props.transition) {
     case 'fade-down':
       style = {
@@ -58,7 +54,7 @@ const TransitionSwitch = (props) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       {props.scrollToTop && (
         <ScrollToTop
           scrollTopDelay={props.scrollTopDelay}
@@ -66,9 +62,9 @@ const TransitionSwitch = (props) => {
           scrollContainer={props.scrollContainer}
         />
       )}
-      <SwitchTransition mode='in-out'>
+      <TransitionGroup component='main'>
         <Transition
-          key={currentKey}
+          key={actualLocation.pathname}
           timeout={props.timeout}
           onEnter={handleEnter}
           onExit={handleExit}
@@ -78,14 +74,13 @@ const TransitionSwitch = (props) => {
             <Switch location={location}>{props.children}</Switch>
           </Animated.div>
         </Transition>
-      </SwitchTransition>
-    </>
+      </TransitionGroup>
+    </React.Fragment>
   );
 };
 
 TransitionSwitch.propTypes = {
   children: PropTypes.array.isRequired,
-  location: PropTypes.object.isRequired,
   transition: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   timeout: PropTypes.object,
   scrollToTop: PropTypes.bool,
@@ -99,8 +94,8 @@ TransitionSwitch.defaultProps = {
   transition: 'fade',
   timeout: { enter: 500, exit: 500 },
   scrollToTop: true,
+  scrollTopDelay: 500,
   animatedDivClassName: 'animatedRouteWrapper',
-  transitionGroupComponent: 'main',
 };
 
 export default TransitionSwitch;
