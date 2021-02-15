@@ -1,3 +1,4 @@
+/* eslint-ignore */
 import React, { useMemo, useState } from 'react';
 import { useLocation, Switch } from 'react-router-dom';
 import { TransitionGroup, Transition } from 'react-transition-group';
@@ -5,7 +6,7 @@ import * as Animated from 'animated/lib/targets/react-dom';
 import ScrollToTop from './ScrollToTop';
 import PropTypes from 'prop-types';
 
-const TransitionSwitch = (props) => {
+const TransitionSwitch = React.forwardRef((props, ref) => {
   const actualLocation = useLocation();
   const [animate] = useState(new Animated.Value(0));
   const [location, setLocation] = useState(actualLocation);
@@ -64,6 +65,7 @@ const TransitionSwitch = (props) => {
       )}
       <TransitionGroup component='main'>
         <Transition
+          nodeRef={ref}
           key={actualLocation.pathname}
           timeout={props.timeout}
           onEnter={handleEnter}
@@ -77,7 +79,7 @@ const TransitionSwitch = (props) => {
       </TransitionGroup>
     </React.Fragment>
   );
-};
+});
 
 TransitionSwitch.propTypes = {
   children: PropTypes.array.isRequired,
