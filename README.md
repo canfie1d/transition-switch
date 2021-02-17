@@ -18,11 +18,14 @@ yarn add transition-switch
 ## Usage
 
 ```bash
-import { TransitionSwitch } from 'transition-switch'';
+import { useRef } from 'react';
+import { TransitionSwitch } from 'transition-switch';
 ```
 
 ```bash
-<TransitionSwitch>
+const ref = useRef(null);
+
+<TransitionSwitch ref={ref}>
   <Route />
   <Route />
 </TransitionSwitch>

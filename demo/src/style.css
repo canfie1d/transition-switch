@@ -3,8 +3,8 @@
   --darkColor: #6e5757;
   --lightColor: #bc8f8f;
   --veryLightColor: #dbd2d2;
-  --fontStack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --fontStack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --background: linear-gradient(to top, #ff9a9e, #fad0c4);
 }
 
@@ -59,7 +59,7 @@ body {
 }
 
 .switch::after {
-  content: "";
+  content: '';
   height: 50px;
   width: 50px;
   position: absolute;
@@ -91,6 +91,9 @@ body {
   line-height: 1.5;
   font-size: 20px;
   color: var(--darkColor);
+}
+.p.p--fitted {
+  margin: 0 0 10px;
 }
 
 .code {

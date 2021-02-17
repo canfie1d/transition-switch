@@ -15,14 +15,21 @@ const Details = () => {
       <code className='code'>
         <pre>{'yarn add transition-switch'}</pre>
       </code>
+      <p className='p p--fitted'>or</p>
+      <code className='code'>
+        <pre>{'npm i transition-switch'}</pre>
+      </code>
       <h2 className='h2'>Usage</h2>
       <code className='code'>
-        <pre>{`import { TransitionSwitch } from 'transition-switch';`}</pre>
+        <pre>{`import { useRef } from 'react';
+import { TransitionSwitch } from 'transition-switch';`}</pre>
       </code>
       <br />
       <code className='code'>
         <pre>
-          {`<TransitionSwitch>
+          {`const ref = useRef(null);
+
+<TransitionSwitch ref={ref}>
   <Route />
   <Route />
 </TransitionSwitch>`}
